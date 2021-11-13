@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { observer } from 'mobx-react';
+import appState from './store/model/Models'
 
-function App() {
+const App = observer(({ appState }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>{appState.count}</h2>
+      <button onClick={appState.incCounter} >Inc Counter</button>
+      <button onClick={appState.decCounter} >Dec Counter</button>
     </div>
-  );
-}
+  )
+})
 
 export default App;
